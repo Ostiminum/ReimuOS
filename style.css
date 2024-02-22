@@ -1,0 +1,25 @@
+body, p, .terminal-text, .terminal-text:focus {
+    background-color: black;
+    font-family: JetBrains Mono;
+    font-size: 16px;
+    color: red;
+    padding: 5px;
+}
+
+p, .box {
+    display: inline-block;
+}
+
+.box {
+    width: 98%;
+}
+
+p {
+    margin: 0;
+}
+
+.terminal-text, .terminal-text:focus {
+    width: 92%;
+    border: 0px;
+    outline: none;
+}
