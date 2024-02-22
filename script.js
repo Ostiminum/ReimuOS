@@ -1,5 +1,5 @@
 const FILES = [
-    "liham.img"
+    "liham.jpg"
 ];
 
 const COMMANDS = [
@@ -55,7 +55,17 @@ function process_command() {
             if (FILES[i] == filename) {
                 valid_input = true
 
-                // process file
+                let img_box = document.createElement("div");
+                img_box.classList.add("box");
+
+                let img_element = document.createElement("img");
+                let img_path = document.createAttribute("src");
+                img_path.value = FILES[i];
+
+                img_element.setAttributeNode(img_path);
+                img_box.appendChild(img_element);
+
+                document.body.appendChild(img_box);
                 break
             }
         }
