@@ -87,7 +87,7 @@ function process_command() {
         for (let i = 0; i < FILES.length; ++i) {
             directory_box.appendChild(create_para("- " + FILES[i]));
 
-            if (i == FILES.length - 1) {
+            if (i < FILES.length - 1) {
                 directory_box.appendChild(document.createElement("br"));
             }
         }
