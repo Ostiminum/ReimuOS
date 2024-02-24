@@ -25,7 +25,31 @@ window.addEventListener("keydown", (event) => {
     }
 })
 
-function os_setup() {
+async function os_setup() {
+    for (let i = 0; i < 5; ++i) {
+        for (let j = 1; j <= 10; ++j) {
+            setTimeout(() => {
+                setTimeout(() => {
+                    let current_bar = document.getElementById("progress-box" + j);
+
+                    current_bar.style.opacity = 100;
+
+                    setTimeout(() => {
+                        current_bar.style.opacity = 0;
+                    }, 250);
+                }, (j-1)*100)
+            }, i*1000+(i*500))
+        }
+    }
+
+    setTimeout(() => {
+        document.getElementById("loading-screen").remove()
+        setTimeout(() => { create_welcome_box(); }, 1000)
+    }, 7500)
+
+}
+
+function create_welcome_box() {
     let welcome_box = document.createElement("div");
     welcome_box.classList.add("box");
     welcome_box.classList.add("welcome-box");
@@ -49,6 +73,26 @@ function os_setup() {
     document.body.appendChild(welcome_box);
 
     create_terminal_box();
+}
+
+function create_terminal_box() {
+    let new_terminalBox = document.createElement("div");
+    new_terminalBox.classList.add("box");
+    new_terminalBox.classList.add("terminal-textbox");
+
+    let indicator = document.createElement("p");
+    indicator.appendChild(document.createTextNode("tahanan> "))
+
+    let text_field = document.createElement("input");
+    text_field.classList.add("terminal-text");
+    text_field.type = "text";
+    text_field.id = "terminal-text" + created_boxes;
+
+    new_terminalBox.appendChild(indicator);
+    new_terminalBox.appendChild(text_field);
+
+    document.body.appendChild(new_terminalBox);
+    document.getElementById("terminal-text" + created_boxes).focus();
 }
 
 function process_command() {
@@ -165,24 +209,4 @@ function create_para(text) {
     );
 
     return new_para;
-}
-
-function create_terminal_box() {
-    let new_terminalBox = document.createElement("div");
-    new_terminalBox.classList.add("box");
-    new_terminalBox.classList.add("terminal-textbox");
-
-    let indicator = document.createElement("p");
-    indicator.appendChild(document.createTextNode("tahanan> "))
-
-    let text_field = document.createElement("input");
-    text_field.classList.add("terminal-text");
-    text_field.type = "text";
-    text_field.id = "terminal-text" + created_boxes;
-
-    new_terminalBox.appendChild(indicator);
-    new_terminalBox.appendChild(text_field);
-
-    document.body.appendChild(new_terminalBox);
-    document.getElementById("terminal-text" + created_boxes).focus();
 }

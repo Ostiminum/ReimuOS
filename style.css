@@ -8,6 +8,35 @@ body, p, .terminal-text, .terminal-text:focus {
     padding: 5px;
 }
 
+#loading-screen {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: black;
+}
+
+#loading-box {
+    display: grid;
+    grid-template-columns: repeat(10, 15px);
+    grid-template-rows: 10px;
+    gap: 2px;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid var(--text_color);
+    padding: 2px;
+}
+
+.progress-box {
+    background-color: var(--text_color);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
 .welcome-box p {
     font-weight: bold;
 }
